@@ -1,0 +1,151 @@
+:root {
+    --primary-color: #e91e63; /* Rosa romântico */
+    --bg-color: #fff0f5; /* Lavanda suave */
+    --text-color: #4a4a4a;
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+/* Tipografia */
+h1, h2 {
+    font-family: 'Dancing Script', cursive;
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://source.unsplash.com/random/1920x1080/?couple,love');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero h1 { font-size: 4rem; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+.hero p { font-size: 1.5rem; margin-top: 10px; }
+
+/* Animação do Coração */
+.heart-animation {
+    font-size: 5rem;
+    animation: heartbeat 1.5s infinite;
+    margin-top: 20px;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Contador */
+.counter-section {
+    padding: 50px 20px;
+    text-align: center;
+    background: white;
+}
+
+.timer-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.time-box {
+    background: var(--primary-color);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 80px;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+}
+
+.time-box span {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Timeline */
+.timeline {
+    padding: 50px 20px;
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Linha vertical central */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: var(--primary-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+}
+
+.memory-card {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.left { left: 0; }
+.right { left: 50%; }
+
+.content {
+    padding: 20px;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.content img {
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Carta Final */
+.love-letter {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: white;
+}
+
+.letter-text {
+    font-style: italic;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--primary-color);
+    color: white;
+    font-size: 0.8rem;
+}
+
+/* Responsividade para Celular */
+@media screen and (max-width: 600px) {
+    .timeline::after { left: 31px; }
+    .memory-card { width: 100%; padding-left: 70px; padding-right: 25px; }
+    .right { left: 0; }
+    .hero h1 { font-size: 2.5rem; }
+}
