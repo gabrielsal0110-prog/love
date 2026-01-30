@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Nós Dois ❤️</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
 </head>
@@ -39,30 +40,7 @@
 
     <section class="timeline">
         <h2>📸 Nossos Melhores Momentos 📸</h2>
-        
-        <div class="memory-card left">
-            <div class="content">
-                <h3>📍 O Início 🛹</h3>
-                <p>Onde tudo começou. Lembro-me como se fosse ontem, a gente sentado na pista de skate.</p>
-                <img src="inicio .jpeg">
-            </div>
-        </div>
-
-        <div class="memory-card right">
-            <div class="content">
-                <h3>✈️ Nossa Viagem 📸</h3>
-                <p>Aquela vez que viajámos e descobrimos que precisamos de ir morar juntos logo!</p>
-                <img src="viagem.jpeg" alt="Foto de viagem">
-            </div>
-        </div>
-        
-        <div class="memory-card left">
-            <div class="content">
-                <h3>👩‍❤️‍👨 Hoje e Sempre 💍</h3>
-                <p>E a cada dia que passa, eu amo-te ainda mais.</p>
-                <img src="hoje.jpeg" alt="Foto atual">
-            </div>
-        </div>
+        <div id="timeline-content"></div>
     </section>
 
     <section class="interaction-section">
@@ -76,6 +54,19 @@
             <p id="love-message" class="hidden-message"></p>
         </div>
     </section>
+
+    <button onclick="abrirModal()" class="reason-item" style="display: block; margin: 20px auto; background: var(--primary-color); color: white; border: none; cursor: pointer;">✨ Adicionar Memória</button>
+
+    <div id="modal-upload" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:white; padding:30px; border-radius:20px; box-shadow:0 0 30px rgba(0,0,0,0.3); z-index:1000; min-width: 320px;">
+        <h3 style="color: var(--primary-color);">Nova Lembrança 📸</h3>
+        <input type="text" id="new-title" placeholder="Título" style="width:100%; margin-bottom:10px; padding: 10px; border-radius: 10px; border: 1px solid #ddd;">
+        <textarea id="new-desc" placeholder="História..." style="width:100%; margin-bottom:10px; padding: 10px; border-radius: 10px; border: 1px solid #ddd; height: 80px;"></textarea>
+        <input type="file" id="new-file" accept="image/*" style="margin-bottom:15px; width: 100%;">
+        <div style="display: flex; gap: 10px; justify-content: center;">
+            <button onclick="uploadMemory()" style="background: var(--primary-color); color: white; border: none; padding: 10px 20px; border-radius: 50px; cursor: pointer;">Salvar ❤️</button>
+            <button onclick="fecharModal()" style="background: #eee; border: none; padding: 10px 20px; border-radius: 50px; cursor: pointer;">Cancelar</button>
+        </div>
+    </div>
 
     <section class="love-letter">
         <h2>💌 Minha Declaração 💌</h2>

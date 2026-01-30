@@ -158,3 +158,21 @@ footer { text-align: center; padding: 40px; background: var(--primary-color); co
     transform: scale(0.95); /* Efeito de apertar ao clicar */
     animation: none; /* Interrompe o pulo para sentir o clique */
 }
+/* ... (Seu CSS original mantido) ... */
+
+/* Ajuste Fino para as Bolinhas da Timeline */
+.memory-card.left::after {
+    right: -13px; /* Centraliza na linha de 6px vindo da esquerda */
+}
+
+.memory-card.right::after {
+    left: -13px; /* Centraliza na linha de 6px vindo da direita */
+}
+
+/* Garante que o container ocupe largura total para o cálculo do JS */
+#timeline-content {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
