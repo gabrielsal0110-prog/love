@@ -1,6 +1,3 @@
-// CONFIGURAÇÃO: Coloque a data do início do namoro aqui!
-// Formato: Ano, Mês (0-11), Dia, Hora, Minuto
-// O mês 7 representa Agosto (Janeiro = 0)
 const startDate = new Date(2024, 7, 23, 0, 0);
 
 function updateTimer() {
@@ -18,8 +15,9 @@ function updateTimer() {
     document.getElementById('seconds').innerText = seconds;
 }
 
-setInterval(updateTimer, 1000);
-updateTimer(); // Roda imediatamente ao carregar
+function celebrate() {
+    alert("Eu amo-te infinitamente! ❤️🌹");
+}
 
-// Easter egg de desenvolvedor ;)
-console.log("Feito com amor para a melhor namorada do mundo.");
+setInterval(updateTimer, 1000);
+updateTimer();

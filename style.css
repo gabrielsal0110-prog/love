@@ -1,7 +1,8 @@
 :root {
-    --primary-color: #e91e63; /* Rosa romântico */
-    --bg-color: #fff0f5; /* Lavanda suave */
-    --text-color: #4a4a4a;
+    --primary-color: #d32f2f;
+    --secondary-color: #ff5252;
+    --bg-color: #fff5f5;
+    --text-color: #2c2c2c;
 }
 
 body {
@@ -12,16 +13,34 @@ body {
     overflow-x: hidden;
 }
 
-/* Tipografia */
-h1, h2 {
+/* Efeito de corações flutuando */
+body::before {
+    content: "❤️ 🌹 ❤️ 🌹";
+    position: fixed;
+    top: -10%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 24px;
+    opacity: 0.05;
+    z-index: -1;
+    pointer-events: none;
+    animation: floatingHearts 20s linear infinite;
+}
+
+@keyframes floatingHearts {
+    from { transform: translateY(0); }
+    to { transform: translateY(100vh); }
+}
+
+h1, h2, h3 {
     font-family: 'Dancing Script', cursive;
     color: var(--primary-color);
 }
 
-/* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://source.unsplash.com/random/1920x1080/?couple,love');
+    background: linear-gradient(rgba(139, 0, 0, 0.5), rgba(0,0,0,0.4)), url('https://source.unsplash.com/random/1920x1080/?love,red');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -29,123 +48,180 @@ h1, h2 {
     align-items: center;
     text-align: center;
     color: white;
+    border-bottom: 5px solid var(--primary-color);
 }
 
-.hero h1 { font-size: 4rem; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-.hero p { font-size: 1.5rem; margin-top: 10px; }
+.hero h1 { font-size: 4rem; margin: 0; text-shadow: 3px 3px 6px rgba(0,0,0,0.7); }
 
-/* Animação do Coração */
 .heart-animation {
-    font-size: 5rem;
+    font-size: 6rem;
     animation: heartbeat 1.5s infinite;
-    margin-top: 20px;
+    cursor: pointer;
+    filter: drop-shadow(0 0 10px rgba(211, 47, 47, 0.8));
 }
 
 @keyframes heartbeat {
     0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
+    50% { transform: scale(1.15); }
     100% { transform: scale(1); }
 }
 
-/* Contador */
-.counter-section {
-    padding: 50px 20px;
-    text-align: center;
-    background: white;
+.counter-section { padding: 50px 20px; text-align: center; background: white; }
+
+.timer-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+
+.time-box {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    min-width: 90px;
+    box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
 }
 
-.timer-container {
+.reasons-grid {
     display: flex;
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
-}
-
-.time-box {
-    background: var(--primary-color);
-    color: white;
     padding: 20px;
-    border-radius: 10px;
-    min-width: 80px;
-    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
 }
 
-.time-box span {
-    display: block;
-    font-size: 2rem;
-    font-weight: bold;
+.reason-item {
+    background: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* Timeline */
+/* TIMELINE - ONDE A MÁGICA ACONTECE */
 .timeline {
     padding: 50px 20px;
     position: relative;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
-/* Linha vertical central */
+/* Linha central */
 .timeline::after {
     content: '';
     position: absolute;
-    width: 4px;
+    width: 6px;
     background-color: var(--primary-color);
     top: 0;
     bottom: 0;
     left: 50%;
-    margin-left: -2px;
+    margin-left: -3px;
+    border-radius: 10px;
 }
 
 .memory-card {
-    padding: 10px 40px;
+    padding: 10px 50px;
     position: relative;
-    width: 50%;
+    width: 50%; /* Cada card ocupa metade do ecrã */
     box-sizing: border-box;
 }
 
-.left { left: 0; }
-.right { left: 50%; }
+/* Bolinha na linha central */
+.memory-card::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -15px;
+    background-color: white;
+    border: 4px solid var(--primary-color);
+    top: 40px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.right::after {
+    left: -14px;
+}
+
+/* Posicionamento */
+.left { left: 0; text-align: right; }
+.right { left: 50%; text-align: left; }
 
 .content {
-    padding: 20px;
+    padding: 25px;
     background-color: white;
-    border-radius: 6px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
 }
+
+.content:hover { transform: scale(1.05); }
 
 .content img {
     width: 100%;
-    border-radius: 5px;
-    margin-top: 10px;
+    max-width: 400px;
+    border-radius: 10px;
+    margin-top: 15px;
 }
 
-/* Carta Final */
+/* Responsividade para telemóvel */
+@media screen and (max-width: 768px) {
+    .timeline::after { left: 31px; }
+    .memory-card { width: 100%; padding-left: 70px; padding-right: 25px; text-align: left; }
+    .memory-card::after { left: 21px; }
+    .right { left: 0; }
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    background: var(--primary-color);
+    color: white;
+}
 .love-letter {
     padding: 60px 20px;
-    text-align: center;
+    text-align: center; /* Centraliza o H2 e o bloco de texto */
     background-color: white;
+    display: flex; /* Utiliza flexbox para garantir centralização */
+    flex-direction: column;
+    align-items: center;
 }
 
 .letter-text {
     font-style: italic;
     font-size: 1.2rem;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 0 auto; /* O segredo: margens automáticas nas laterais centralizam o bloco */
     line-height: 1.6;
+    text-align: center; /* Garante que as linhas de texto fiquem no meio */
+}
+/* Seção "Coisas que eu amo em ti" */
+.reasons-section {
+    padding: 40px 20px;
+    text-align: center; /* Centraliza o título H2 */
+    background-color: #ffebee; /* Cor de fundo leve para destacar */
 }
 
-footer {
-    text-align: center;
-    padding: 20px;
-    background: var(--primary-color);
-    color: white;
-    font-size: 0.8rem;
+.reasons-section h2 {
+    margin-bottom: 30px; /* Dá um espaço entre o título e os itens abaixo */
+    display: block; /* Garante que ocupe a linha toda para o alinhamento funcionar */
 }
 
-/* Responsividade para Celular */
-@media screen and (max-width: 600px) {
-    .timeline::after { left: 31px; }
-    .memory-card { width: 100%; padding-left: 70px; padding-right: 25px; }
-    .right { left: 0; }
-    .hero h1 { font-size: 2.5rem; }
+.reasons-grid {
+    display: flex;
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    gap: 20px;
+    flex-wrap: wrap; /* Garante que os itens quebrem linha em telas menores */
+    max-width: 1000px;
+    margin: 0 auto; /* Centraliza o bloco da grid na página */
+}
+
+.reason-item {
+    background: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px solid #ffcdd2; /* Borda sutil em tom de vermelho */
+    transition: transform 0.3s ease;
+}
+
+.reason-item:hover {
+    transform: translateY(-5px); /* Efeito de flutuar ao passar o mouse */
 }
