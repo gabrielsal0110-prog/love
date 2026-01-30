@@ -133,3 +133,28 @@ footer { text-align: center; padding: 40px; background: var(--primary-color); co
     .right { left: 0; }
     .timeline h2 { padding-left: 20px; }
 }
+/* Definição da animação de pulo */
+@keyframes jump {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
+
+/* Aplica o pulo quando passa o mouse (hover) nos itens da grid */
+.reason-item:hover {
+    animation: jump 0.5s ease-in-out;
+    background-color: #fff; /* Garante destaque */
+    cursor: pointer;
+}
+
+/* Aplica o pulo quando passa o mouse nos cartões da timeline */
+.content:hover {
+    animation: jump 0.5s ease-in-out;
+    box-shadow: 0 15px 35px rgba(211, 47, 47, 0.2); /* Sombra mais forte ao pular */
+}
+
+/* Aplica o pulo ao clicar (active) */
+.reason-item:active, .content:active {
+    transform: scale(0.95); /* Efeito de apertar ao clicar */
+    animation: none; /* Interrompe o pulo para sentir o clique */
+}
